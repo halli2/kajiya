@@ -239,8 +239,6 @@ impl Swapchain {
 
         match present_index {
             Ok(present_index) => {
-                assert_eq!(present_index, self.next_semaphore);
-
                 self.next_semaphore = (self.next_semaphore + 1) % self.images.len();
                 Ok(SwapchainImage {
                     image: self.images[present_index].clone(),
